@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import './Statistics.css';
+import Notification from './Notification.jsx';
 
 Statistics.prototype = {
   good: PropTypes.number.isRequired,
@@ -16,10 +18,10 @@ export default function Statistics({
   positiveFeedback,
 }) {
   if (totalFeedback === 0) {
-    return <p>no feedback yet</p>;
+    return <Notification message="no feedback yet" />;
   }
   return (
-    <div>
+    <div className="stats">
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
