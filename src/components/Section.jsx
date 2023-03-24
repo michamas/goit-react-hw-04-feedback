@@ -1,3 +1,17 @@
-// const { Component } = require("react");
+import PropTypes from 'prop-types';
 
-// class Section extends Component {}
+Section.prototype = {
+  title: PropTypes.string.isRequired,
+  childern: PropTypes.node,
+};
+
+export default function Section(props) {
+  const { title, childern } = props;
+
+  return (
+    <div>
+      <h2>{title}</h2>
+      {childern}
+    </div>
+  );
+}

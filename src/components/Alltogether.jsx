@@ -1,32 +1,17 @@
-// import Alltogether from './Alltogether.jsx';
-import Statistics from './Statistics.jsx';
-import Section from './Section.jsx';
-import './App.css';
 import { Component } from 'react';
-import FeedbackOptions from './FeedbackOptions.jsx';
-import Test from './Test.jsx';
 
-// const INITIALSTATE = {
-//   good: 0,
-//   neutal: 0,
-//   bad: 0,
-// };
-
-export class App extends Component {
+class Alltogether extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
     totalFeedback: 0,
-    positiveFeedback: 0,
+    positivePercentage: 0,
   };
 
-  // props = {
-  //   totalFeedback: 0,
-  //   positiveFeedback: 0,
-  // };
-
+  //
   handleStats = event => {
+    // console.log(event.target.innerHTML);
     switch (event.target.innerHTML) {
       case 'Good':
         this.setState(state => {
@@ -55,6 +40,7 @@ export class App extends Component {
     }
     this.countTotalFeedback();
     this.countPositiveFeedbackPercentage();
+    // console.log(this.state.good / this.state.tot);
   };
 
   countTotalFeedback = () => {
@@ -68,29 +54,43 @@ export class App extends Component {
   countPositiveFeedbackPercentage = () => {
     this.setState(state => {
       return {
-        positiveFeedback: Math.round((state.good / state.totalFeedback) * 100),
+        positivePercentage: Math.round(
+          (state.good / state.totalFeedback) * 100
+        ),
       };
     });
   };
 
   render() {
-    const { good, neutral, bad, totalFeedback, positiveFeedback } = this.state;
-
+    const { good, neutral, bad, totalFeedback, positivePercentage } =
+      this.state;
     return (
-      <div className="app">
-        <Section title={'Please Leave feedback'}></Section>
-        <FeedbackOptions onLeaveFeedback={this.handleStats} />
-        <Section title={'Statistics'}>
-          <Test />
-        </Section>
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          totalFeedback={totalFeedback}
-          positiveFeedback={positiveFeedback}
-        />
+      <div>
+        <div>
+          <h4>BUTTONS</h4>
+
+          <button type="button" onClick={this.handleStats}>
+            Good
+          </button>
+          <button type="button" onClick={this.handleStats}>
+            Neutral
+          </button>
+          <button type="button" onClick={this.handleStats}>
+            Bad
+          </button>
+        </div>
+        <div>
+          <h4>STATISTICS</h4>
+
+          <div>Good: {good}</div>
+          <div>Neutral: {neutral}</div>
+          <div>Bad: {bad}</div>
+          <div>Total: {totalFeedback}</div>
+          <div>Positives: {positivePercentage}%</div>
+        </div>
       </div>
     );
   }
 }
+
+export default Alltogether;
