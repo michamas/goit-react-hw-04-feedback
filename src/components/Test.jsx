@@ -6,7 +6,7 @@ class Test extends Component {
   static propTypes = {};
 
   render() {
-    return <div>test div</div>;
+    return <div>test div - does it appear?</div>;
   }
 }
 export default Test;
