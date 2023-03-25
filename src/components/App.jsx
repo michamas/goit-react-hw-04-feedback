@@ -6,25 +6,18 @@ import { Component } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions.jsx';
 import Test from './Test.jsx';
 
-// const INITIALSTATE = {
-//   good: 0,
-//   neutal: 0,
-//   bad: 0,
-// };
+const INITIALSTATE = {
+  good: 0,
+  neutral: 0,
+  bad: 0,
+};
 
 export class App extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    ...INITIALSTATE,
     totalFeedback: 0,
     positiveFeedback: 0,
   };
-
-  // props = {
-  //   totalFeedback: 0,
-  //   positiveFeedback: 0,
-  // };
 
   handleStats = event => {
     switch (event.target.innerHTML) {
