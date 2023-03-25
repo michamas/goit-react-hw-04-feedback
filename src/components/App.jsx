@@ -1,9 +1,9 @@
 // import Alltogether from './Alltogether.jsx';
-import Statistics from './Statistics.jsx';
-import Section from './Section.jsx';
+import Statistics from './Statistics/Statistics.jsx';
+import Section from './Section/Section.jsx';
 import './App.css';
 import { Component } from 'react';
-import FeedbackOptions from './FeedbackOptions.jsx';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions.jsx';
 import Test from './Test.jsx';
 
 // const INITIALSTATE = {
@@ -80,9 +80,10 @@ export class App extends Component {
       <div className="app">
         <Section title={'Please Leave feedback'}></Section>
         <FeedbackOptions onLeaveFeedback={this.handleStats} />
-        <Section title={'Statistics'}>
+        <Section title={''}>
           <Test />
         </Section>
+        <Section title={'Statistics'}></Section>
         <Statistics
           good={good}
           neutral={neutral}

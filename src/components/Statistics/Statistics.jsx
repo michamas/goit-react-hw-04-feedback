@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import './Statistics.css';
-import Notification from './Notification.jsx';
+import Notification from 'components/Notification/Notification.jsx';
 
 Statistics.prototype = {
   good: PropTypes.number.isRequired,
