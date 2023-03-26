@@ -71,19 +71,18 @@ export class App extends Component {
 
     return (
       <div className="app">
-        <Section title={'Please Leave feedback'}></Section>
-        <FeedbackOptions onLeaveFeedback={this.handleStats} />
-        <Section title={''}>
-          <Test />
+        <Section title={'Please Leave feedback'}>
+          <FeedbackOptions onLeaveFeedback={this.handleStats} />
         </Section>
-        <Section title={'Statistics'}></Section>
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          totalFeedback={totalFeedback}
-          positiveFeedback={positiveFeedback}
-        />
+        <Section title={'Statistics'}>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            totalFeedback={totalFeedback}
+            positiveFeedback={positiveFeedback}
+          />
+        </Section>
       </div>
     );
   }

@@ -29,3 +29,8 @@ button {
 button:hover {
   background-color: #3f7d41;
 }
+
+.section {
+  display: block;
+  text-align: center;
+}

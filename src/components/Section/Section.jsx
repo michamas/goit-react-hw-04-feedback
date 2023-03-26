@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 
 Section.prototype = {
   title: PropTypes.string.isRequired,
-  childern: PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default function Section(props) {
-  const { title, childern } = props;
+  const { title, children } = props;
 
   return (
-    <div>
+    <div className="section">
       <h2>{title}</h2>
-      {childern}
+      {children}
     </div>
   );
 }
