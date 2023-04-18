@@ -2,9 +2,8 @@
 import Statistics from './Statistics/Statistics.jsx';
 import Section from './Section/Section.jsx';
 import './App.css';
-import { Component } from 'react';
+import { Component, useEffect, useState } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions.jsx';
-import Test from './Test.jsx';
 
 const INITIALSTATE = {
   good: 0,
@@ -12,78 +11,63 @@ const INITIALSTATE = {
   bad: 0,
 };
 
-export class App extends Component {
-  state = {
-    ...INITIALSTATE,
-    totalFeedback: 0,
-    positiveFeedback: 0,
-  };
+export const App = () => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+  const [totalFeedback, setTotalFeedback] = useState(0);
+  const [positiveFeedback, setPositiveFeedback] = useState(0);
 
-  handleStats = event => {
+  const handleStats = event => {
     switch (event.target.innerHTML) {
       case 'Good':
-        this.setState(state => {
-          return {
-            good: state.good + 1,
-          };
-        });
+        setGood(good + 1);
         break;
       case 'Neutral':
-        this.setState(state => {
-          return {
-            neutral: state.neutral + 1,
-          };
-        });
+        setNeutral(neutral + 1);
         break;
       case 'Bad':
-        this.setState(state => {
-          return {
-            bad: state.bad + 1,
-          };
-        });
+        setBad(bad + 1);
         break;
-
       default:
         console.log('default');
     }
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
+    // countTotalFeedback();
+    // countPositiveFeedbackPercentage();
   };
 
-  countTotalFeedback = () => {
-    this.setState(state => {
-      return {
-        totalFeedback: state.good + state.neutral + state.bad,
-      };
-    });
+  useEffect(() => {
+    countTotalFeedback();
+  }, [good, bad, neutral]);
+
+  const countTotalFeedback = () => {
+    setTotalFeedback(good + neutral + bad);
+    console.log('countedTotal');
   };
 
-  countPositiveFeedbackPercentage = () => {
-    this.setState(state => {
-      return {
-        positiveFeedback: Math.round((state.good / state.totalFeedback) * 100),
-      };
-    });
+  useEffect(() => {
+    countPositiveFeedbackPercentage();
+  }, [good, totalFeedback]);
+
+  const countPositiveFeedbackPercentage = () => {
+    setPositiveFeedback(Math.round((good / totalFeedback) * 100));
+    console.log('setPositiveFeedback');
   };
 
-  render() {
-    const { good, neutral, bad, totalFeedback, positiveFeedback } = this.state;
-
-    return (
-      <div className="app">
-        <Section title={'Please Leave feedback in HW4'}>
-          <FeedbackOptions onLeaveFeedback={this.handleStats} />
-        </Section>
-        <Section title={'Statistics'}>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            totalFeedback={totalFeedback}
-            positiveFeedback={positiveFeedback}
-          />
-        </Section>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="app">
+      <Section title={'Please Leave feedback in HW4'}>
+        <FeedbackOptions onLeaveFeedback={handleStats} />
+      </Section>
+      <Section title={'Statistics'}>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      </Section>
+    </div>
+  );
+};
