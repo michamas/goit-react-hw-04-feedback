@@ -71,7 +71,7 @@ export class App extends Component {
 
     return (
       <div className="app">
-        <Section title={'Please Leave feedback'}>
+        <Section title={'Please Leave feedback in HW4'}>
           <FeedbackOptions onLeaveFeedback={this.handleStats} />
         </Section>
         <Section title={'Statistics'}>
