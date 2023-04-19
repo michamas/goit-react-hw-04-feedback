@@ -32,13 +32,13 @@ export const App = () => {
     countTotalFeedback();
   }, [good, bad, neutral]);
 
-  const countTotalFeedback = () => {
-    setTotalFeedback(good + neutral + bad);
-  };
-
   useEffect(() => {
     countPositiveFeedbackPercentage();
   }, [good, totalFeedback]);
+
+  const countTotalFeedback = () => {
+    setTotalFeedback(good + neutral + bad);
+  };
 
   const countPositiveFeedbackPercentage = () => {
     setPositiveFeedback(Math.round((good / totalFeedback) * 100));
