@@ -2,14 +2,8 @@
 import Statistics from './Statistics/Statistics.jsx';
 import Section from './Section/Section.jsx';
 import './App.css';
-import { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions.jsx';
-
-const INITIALSTATE = {
-  good: 0,
-  neutral: 0,
-  bad: 0,
-};
 
 export const App = () => {
   const [good, setGood] = useState(0);
@@ -42,7 +36,6 @@ export const App = () => {
 
   const countTotalFeedback = () => {
     setTotalFeedback(good + neutral + bad);
-    console.log('countedTotal');
   };
 
   useEffect(() => {
