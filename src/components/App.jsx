@@ -30,12 +30,11 @@ export const App = () => {
 
   useEffect(() => {
     countTotalFeedback();
-    console.log('hw4');
-  }, [good, bad, neutral]);
+  });
 
   useEffect(() => {
     countPositiveFeedbackPercentage();
-  }, [good, totalFeedback]);
+  });
 
   const countTotalFeedback = () => {
     setTotalFeedback(good + neutral + bad);
@@ -43,7 +42,6 @@ export const App = () => {
 
   const countPositiveFeedbackPercentage = () => {
     setPositiveFeedback(Math.round((good / totalFeedback) * 100));
-    console.log('hw4');
   };
 
   return (
