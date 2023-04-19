@@ -30,6 +30,7 @@ export const App = () => {
 
   useEffect(() => {
     countTotalFeedback();
+    console.log('hw4');
   }, [good, bad, neutral]);
 
   useEffect(() => {
